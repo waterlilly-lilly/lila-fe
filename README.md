@@ -1,2 +1,2 @@
 # lila-fe
-plural-friendly chat application (js frontend)
+plural-friendly chat application (kotlin/js webapp frontend)
