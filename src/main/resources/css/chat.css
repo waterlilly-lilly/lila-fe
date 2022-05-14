@@ -1,0 +1,70 @@
+html {
+    background: #F7A8B8;
+    text-align: center;
+    font-family: "Linotte", "Lucida Console", monospace;
+}
+
+@font-face {
+    font-family: Linotte;
+    src: url(../assets/LinotteRegular.otf);
+  }
+
+form {
+    width: 100%;
+    overflow:hidden;
+}
+
+input {
+    margin-top: 1%;
+    padding: 2%;
+    width: 100%;
+    background-color: darkgrey;
+    border-style: none;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: 1px;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+label {
+    display: block;
+    margin-top: 1%;
+    
+}
+
+button {
+    padding: 1%;
+}
+
+#loggeduser {
+    font-size: 30px;
+}
+
+#outerchatbox {
+    background-color: rgb(255, 199, 207);
+    padding: 1rem;
+    box-shadow: 10px 10px 10px black;
+    width: 30rem;
+    height: 40rem;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+#chatbox {
+    background-color: rgb(60, 60, 60);
+    width: 100%;
+    height: 90%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    text-align: left;
+    color: white;
+    overflow-wrap: break-word;
+}
+
+#loggeduser {
+    padding-top: 2%
+}
+
+#errormessage {
+    padding-top: 2.5%;
+}

@@ -1,0 +1,76 @@
+html {
+    background: #F7A8B8;
+    font-family: "Linotte", "Lucida Console", monospace;
+}
+
+@font-face {
+    font-family: Linotte;
+    src: url(../assets/LinotteRegular.otf);
+  }
+
+a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#streamchat {
+    display: flex;
+    height: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    margin-top: -1%;
+
+}
+
+#stream {
+    width: 960px;
+    height: 540px;
+    margin-right: 0.3em;
+    margin-left: -40%;
+    margin-top: 5%;
+    margin-bottom: 20%;
+    font-size: 250%;
+    text-align: center;
+}
+
+#streamframe {
+    height: 100%;
+    width: 100%;
+}
+
+#chatbox {
+    flex: 1;
+    height: 53rem;
+    margin-left: 0.3em;
+    margin-right: -30%;
+    margin-top: -8%;
+    border: none;
+}
+
+.navigation-list {
+    display: inline-flex;
+    list-style-type: none;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 0;
+    margin-left: 5%;
+}
+
+.buttons {
+        width: 150px;
+        background-color: #55CDFC;
+        margin: auto;
+        margin-bottom: 2%;
+        display: inline-flex;
+        justify-content: center;
+        opacity: 0.8;
+        font-size: larger;
+        color: black;
+        padding: 15px;
+        border-bottom: solid;
+        border-left: solid;
+        border-color: lightblue;
+        border-width: 2px;
+}

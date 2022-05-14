@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register</title>
+    <meta name="author" content="Luna">
+    <meta name="description" content="Chat Register">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/favicon.svg">
+</head>
+
+<h1>Login or Register:</h1>
+
+<body>
+<main>
+<div id="register-box" class="box">
+    <form autocomplete="off">
+        <h2>Register</h2>
+        <label for="register-uname">Username:</label><br>
+        <input type="text" id="register-uname" name="uname" required><br>
+
+        <label for="register-password">Password:</label><br>
+        <input type="password" id="register-password" name="password" required><br><br>
+
+        <label for="register-confirm-password">Confirm password:</label><br>
+        <input type="password" id="register-confirm-password" name="confirm-password" required><br><br>
+
+        <input type="submit" value="Register">
+    </form>
+</div>
+<div id="login-box" class="box">
+    <form autocomplete="off">
+        <h2>Login</h2>
+        <label for="login-uname">Username:</label><br>
+        <input type="text" id="login-uname" name="uname" required><br>
+
+        <label for="login-password">Pin:</label><br>
+        <input type="password" id="login-password" name="password" required><br><br>
+
+        <input type="submit" value="Login">
+    </form>
+</div>
+</main>
+<div id="errormessage"></div>
+<span id="username"></span>
+
+<script src="lila-fe.js"></script>
+
+</body>
+</html>
