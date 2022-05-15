@@ -4,6 +4,7 @@ import kotlinx.browser.window
 import org.w3c.fetch.Headers
 import org.w3c.fetch.RequestInit
 import org.w3c.fetch.Response
+import kotlin.js.Json
 import kotlin.js.Promise
 
 object Networking {
@@ -23,4 +24,9 @@ object Networking {
         return response
     }
     fun fetch(path: String): Response = fetch(path, "GET", Headers(), "")
+    fun post(path: String, body: Json): Response {
+        val headers = Headers()
+        headers.append("Content-Type", "application/json")
+        return fetch(path, "POST", headers, JSON.stringify(body))
+    }
 }
