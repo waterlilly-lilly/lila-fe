@@ -1,4 +1,4 @@
-package dev.waterlilly.lila_fe.rest
+package dev.waterlilly.lila_fe.api
 
 import dev.waterlilly.lila_fe.util.Networking
 import org.w3c.fetch.Response

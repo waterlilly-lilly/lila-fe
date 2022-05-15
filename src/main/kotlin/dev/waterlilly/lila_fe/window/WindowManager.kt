@@ -6,9 +6,10 @@ import dev.waterlilly.lila_fe.window.windows.RegisterWindow
 import kotlinx.browser.document
 import kotlinx.browser.window
 import kotlinx.dom.addClass
-import org.w3c.dom.Element
-import org.w3c.dom.events.Event
-import org.w3c.fetch.Response
+import kotlinx.dom.hasClass
+import kotlinx.dom.removeClass
+import org.w3c.dom.*
+import org.w3c.dom.events.MouseEvent
 
 object WindowManager {
     val openWindows: HashSet<String> = HashSet()
@@ -16,7 +17,15 @@ object WindowManager {
     fun initializeWindows() {
         windows.put("login", LoginWindow)
         windows.put("register", RegisterWindow)
+        document.addEventListener("click", {event ->
+            val target = event.target as Element
+            if(target.hasClass("window")) {
+                document.getElementsByClassName("active-window").asList().iterator().forEach { el -> el.removeClass("active-window")}
+                target.addClass("active-window")
+            }
+        })
     }
+
     fun toggleWindow(window: String) {
         if(openWindows.contains(window)) {
             document.getElementById("$window-window")?.remove()
@@ -26,11 +35,18 @@ object WindowManager {
                 .then {res -> res.text()}
                 .then {body ->
                     val div = document.createElement("div")
+                    val header = document.createElement("div")
+                    val draggable_button = document.createElement("button") as HTMLButtonElement
+                    draggable_button.addClass("window-drag-button")
+                    draggable_button.setAttribute("onclick", "this.parentElement.parentElement.classList.toggle(\"draggable\")")
                     div.setAttribute("id", "$window-window")
+                    header.setAttribute("id", "$window-window-header")
+                    header.addClass("window-header")
+                    header.innerHTML = draggable_button.outerHTML + "\n" + "Window"
                     div.addClass("window")
                     val frag = document.createDocumentFragment()
                     println("creating window $window")
-                    div.innerHTML = body
+                    div.innerHTML = header.outerHTML + "\n" + body
                     dragElement(div)
                     document.body?.insertBefore(div, document.getElementById("errormessage"))
                     windows[window]?.runWindow()
@@ -69,9 +85,11 @@ object WindowManager {
                 "    pos3 = e.clientX;\n" +
                 "    pos4 = e.clientY;\n" +
                 "    // set the element's new position:\n" +
+                "    if(element.classList.contains(\"draggable\")) {" +
                 "    element.style.top = (element.offsetTop - pos2) + \"px\";\n" +
                 "    element.style.left = (element.offsetLeft - pos1) + \"px\";\n" +
-                "  }\n" +
+                "  }" +
+                "}\n" +
                 "\n" +
                 "  function closeDragElement() {\n" +
                 "    // stop moving when mouse button is released:\n" +

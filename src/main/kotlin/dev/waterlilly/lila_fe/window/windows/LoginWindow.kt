@@ -1,6 +1,6 @@
 package dev.waterlilly.lila_fe.window.windows
 
-import dev.waterlilly.lila_fe.rest.Authentication
+import dev.waterlilly.lila_fe.api.Authentication
 import dev.waterlilly.lila_fe.window.Window
 import kotlinx.browser.document
 import kotlinx.browser.localStorage

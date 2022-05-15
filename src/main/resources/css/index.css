@@ -68,7 +68,16 @@ form {
     display: inline-flex;
     width: 20%;
 }
-
+.window-drag-button {
+    width: 100px;
+    height: 20px;
+}
+.active-window {
+    z-index: 1000;
+}
+:not(.active-window) {
+    z-index: 0;
+}
 #errormessage {
     padding-top: 1%;
 }
