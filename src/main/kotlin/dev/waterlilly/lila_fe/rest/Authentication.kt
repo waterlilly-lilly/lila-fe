@@ -1,8 +1,6 @@
 package dev.waterlilly.lila_fe.rest
 
-import dev.waterlilly.lila_fe.pages.Login
 import dev.waterlilly.lila_fe.util.Networking
-import org.w3c.fetch.Headers
 import org.w3c.fetch.Response
 import kotlin.js.json
 

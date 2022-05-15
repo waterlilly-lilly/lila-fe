@@ -9,7 +9,8 @@ repositories {
     mavenCentral()
 }
 
-
+dependencies {
+}
 
 kotlin {
     js(IR) {

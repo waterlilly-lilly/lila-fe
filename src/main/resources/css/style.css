@@ -12,11 +12,11 @@ form {
     width: 100%
 }
 
-.box {
+.window {
     background-color: rgb(255, 199, 207);
     padding: 5%;
-    box-shadow: 10px 10px 10px black;
-    border-radius: 5px;
+    box-shadow: 5px 5px 0 black;
+    border-radius: 10px;
     display: inline-flex;
     width: 20%;
 }
