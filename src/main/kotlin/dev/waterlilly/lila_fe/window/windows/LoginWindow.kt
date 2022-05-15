@@ -34,4 +34,6 @@ object LoginWindow : Window {
             }
         })
     }
+    override val title: String
+        get() = "Login"
 }

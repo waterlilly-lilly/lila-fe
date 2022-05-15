@@ -62,15 +62,32 @@ form {
 .window {
     position: absolute;
     background-color: rgb(255, 199, 207);
-    padding: 5%;
-    box-shadow: 5px 5px 0 black;
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: #281623;
     border-radius: 10px;
-    display: inline-flex;
     width: 20%;
+    text-align: center;
+}
+.window-header {
+    margin: 0;
+    cursor: move;
+    width: 100%;
+    height: 40px;
+    display: block;
+    background-color: #f7a8df;
+    border-radius: 10px;
+    text-align: left;
 }
 .window-drag-button {
-    width: 100px;
-    height: 20px;
+    background-color: #f7a8df;
+    border: none;
+    color: black;
+    font-size: 31px;
+    cursor: pointer;
+}
+.window-drag-button-selected {
+    background-color: #8e3b75;
 }
 .active-window {
     z-index: 1000;

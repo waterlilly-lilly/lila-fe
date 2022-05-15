@@ -45,4 +45,7 @@ object RegisterWindow : Window {
             }
         })
     }
+
+    override val title: String
+        get() = "Register"
 }

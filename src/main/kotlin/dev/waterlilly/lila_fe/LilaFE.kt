@@ -6,4 +6,5 @@ fun main() {
     WindowManager.initializeWindows()
     WindowManager.toggleWindow("register")
     WindowManager.toggleWindow("login")
+    WindowManager.afterInitialize()
 }
