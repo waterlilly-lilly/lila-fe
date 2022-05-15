@@ -22,4 +22,5 @@ object Networking {
             }
         return response
     }
+    fun fetch(path: String): Response = fetch(path, "GET", Headers(), "")
 }

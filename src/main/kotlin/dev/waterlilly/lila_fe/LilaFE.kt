@@ -1,7 +1,7 @@
 package dev.waterlilly.lila_fe
 
-import dev.waterlilly.lila_fe.user.Login
-import dev.waterlilly.lila_fe.user.Register
+import dev.waterlilly.lila_fe.pages.Login
+import dev.waterlilly.lila_fe.pages.Register
 
 
 fun main(args: Array<String>) {
