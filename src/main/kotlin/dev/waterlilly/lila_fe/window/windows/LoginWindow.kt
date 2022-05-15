@@ -18,14 +18,15 @@ object LoginWindow : Window {
             val password = formData.get("password")
 
             try {
-                val loginInfo = Authentication.login(uname, password)
-                if(loginInfo.status == 200.toShort()) {
-                    document.getElementById("errormessage")?.innerHTML = ""
-                    localStorage.setItem("username", uname)
-                    document.getElementById("username")?.innerHTML = "Logged in as $uname"
-                    window.location.replace("/index.html")
-                } else {
-                    document.getElementById("errormessage")?.innerHTML = "Incorrect login!"
+                Authentication.login(uname, password).then {res ->
+                    if(res.status == 200.toShort()) {
+                        document.getElementById("errormessage")?.innerHTML = ""
+                        localStorage.setItem("username", uname)
+                        document.getElementById("username")?.innerHTML = "Logged in as $uname"
+                        window.location.replace("/index.html")
+                    } else {
+                        document.getElementById("errormessage")?.innerHTML = "Incorrect login!"
+                    }
                 }
             } catch(e: Exception) {
                 console.log(e)

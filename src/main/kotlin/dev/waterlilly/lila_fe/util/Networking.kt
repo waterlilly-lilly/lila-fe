@@ -1,5 +1,6 @@
 package dev.waterlilly.lila_fe.util
 
+import dev.waterlilly.lila_fe.util.Networking.fetch
 import kotlinx.browser.window
 import org.w3c.fetch.Headers
 import org.w3c.fetch.RequestInit
@@ -8,23 +9,11 @@ import kotlin.js.Json
 import kotlin.js.Promise
 
 object Networking {
-    fun fetch(path: String, method: String, headers: Headers, body: String): Response {
-        var response: Response = Response.error()
-
-        run<Promise<Any?>>{
-            val promise = Promise.resolve(window.fetch(path, RequestInit(method = method, headers = headers, body = body)))
-            var resJson: Promise<Any?> = Promise { _: (Any?) -> Unit, _: (Throwable) -> Unit -> }
-            promise.then {res ->
-                resJson = res.json()
-            }
-            resJson}
-            .then {rsp ->
-                response = rsp as Response
-            }
-        return response
+    fun fetch(path: String, method: String, headers: Headers, body: String?): Promise<Response> {
+        return window.fetch(path, RequestInit(method = method, headers = headers, body = body))
     }
-    fun fetch(path: String): Response = fetch(path, "GET", Headers(), "")
-    fun post(path: String, body: Json): Response {
+    fun get(path: String): Promise<Response> = fetch(path, "GET", Headers(), null)
+    fun post(path: String, body: Json): Promise<Response> {
         val headers = Headers()
         headers.append("Content-Type", "application/json")
         return fetch(path, "POST", headers, JSON.stringify(body))

@@ -10,7 +10,7 @@ import org.w3c.xhr.FormData
 
 object RegisterWindow : Window {
     override fun runWindow() {
-        val form = document.getElementById("register") as HTMLFormElement
+        val form = document.getElementById("register-form") as HTMLFormElement
         form.addEventListener("submit", {event ->
             event.preventDefault()
             val formData = FormData(form)
@@ -23,19 +23,22 @@ object RegisterWindow : Window {
                 return@addEventListener
             }
             try {
-                val isTaken = Networking.fetch("/api/users/$uname")
-                if (isTaken.status == 200.toShort()) {
-                    document.getElementById("errormessage")?.innerHTML = "$uname is already taken!"
-                    return@addEventListener
-                }
-                val regRes = Authentication.register(uname, password)
-                if (regRes.status == 200.toShort()) {
-                    document.getElementById("errormessage")?.innerHTML = "Registered your account!"
-                    window.location.replace("/login.html")
-                } else {
-                    document.getElementById("errormessage")?.innerHTML =
-                        "Failed to register your account. Please try again later."
-                }
+                Networking.get("/api/users/$uname")
+                    .then { res ->
+                        if (res.status == 200.toShort()) {
+                            document.getElementById("errormessage")?.innerHTML = "$uname is already taken!"
+                            return@then
+                        }
+                        Authentication.register(uname, password).then {regRes ->
+                            if (regRes.status == 200.toShort()) {
+                                document.getElementById("errormessage")?.innerHTML = "Registered your account!"
+                                window.location.replace("/login.html")
+                            } else {
+                                document.getElementById("errormessage")?.innerHTML =
+                                    "Failed to register your account. Please try again later."
+                            }
+                        }
+                    }
             } catch(e: Exception) {
                 console.log(e)
                 document.getElementById("errormessage")?.innerHTML = "An error occurred. Please try again later. $e"
