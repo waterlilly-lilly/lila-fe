@@ -1,6 +1,7 @@
 package dev.waterlilly.lila_fe.window.windows
 
 import dev.waterlilly.lila_fe.api.Authentication
+import dev.waterlilly.lila_fe.util.equ
 import dev.waterlilly.lila_fe.window.Window
 import kotlinx.browser.document
 import kotlinx.browser.localStorage
@@ -19,7 +20,7 @@ object LoginWindow : Window {
 
             try {
                 Authentication.login(uname, password).then {res ->
-                    if(res.status == 200.toShort()) {
+                    if(res.status equ 200) {
                         document.getElementById("errormessage")?.innerHTML = ""
                         localStorage.setItem("username", uname)
                         document.getElementById("username")?.innerHTML = "Logged in as $uname"
