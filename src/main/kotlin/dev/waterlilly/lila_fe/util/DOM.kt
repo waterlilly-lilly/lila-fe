@@ -13,7 +13,7 @@ object DOM {
     }
     fun getAllParents(element: Element): HashSet<Element> {
         var a = element
-        var arr: HashSet<Element> = hashSetOf()
+        val arr: HashSet<Element> = hashSetOf()
         while(a.parentElement != null) {
             arr.add(a.parentElement!!)
             a = a.parentElement!!

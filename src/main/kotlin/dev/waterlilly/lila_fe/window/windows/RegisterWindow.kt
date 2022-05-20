@@ -16,9 +16,9 @@ object RegisterWindow : Window {
             val formData = FormData(form)
             val uname = formData.get("uname")
             val password = formData.get("password")
-            val confirm_password = formData.get("confirm-password")
+            val confirmPassword = formData.get("confirm-password")
 
-            if(password != confirm_password) {
+            if(password != confirmPassword) {
                 document.getElementById("errormessage")?.innerHTML = "Passwords do not match!"
                 return@addEventListener
             }
@@ -29,7 +29,7 @@ object RegisterWindow : Window {
                             document.getElementById("errormessage")?.innerHTML = "$uname is already taken!"
                             return@then
                         }
-                        Authentication.register(uname, password).then {regRes ->
+                        Authentication.register(uname as String, password as String).then { regRes ->
                             if (regRes.status == 200.toShort()) {
                                 document.getElementById("errormessage")?.innerHTML = "Registered your account!"
                                 window.location.replace("/login.html")
