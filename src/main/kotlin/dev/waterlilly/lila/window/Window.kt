@@ -1,4 +1,4 @@
-package dev.waterlilly.lila_fe.window
+package dev.waterlilly.lila.window
 
 interface Window {
     fun runWindow()

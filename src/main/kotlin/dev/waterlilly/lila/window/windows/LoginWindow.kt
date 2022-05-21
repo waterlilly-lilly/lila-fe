@@ -1,8 +1,8 @@
-package dev.waterlilly.lila_fe.window.windows
+package dev.waterlilly.lila.window.windows
 
-import dev.waterlilly.lila_fe.api.Authentication
-import dev.waterlilly.lila_fe.util.equ
-import dev.waterlilly.lila_fe.window.Window
+import dev.waterlilly.lila.api.AuthenticationAPI
+import dev.waterlilly.lila.util.equ
+import dev.waterlilly.lila.window.Window
 import kotlinx.browser.document
 import kotlinx.browser.localStorage
 import kotlinx.browser.window
@@ -19,7 +19,7 @@ object LoginWindow : Window {
             val password = formData.get("password")
 
             try {
-                Authentication.login(uname, password).then {res ->
+                AuthenticationAPI.login(uname, password).then { res ->
                     if(res.status equ 200) {
                         document.getElementById("errormessage")?.innerHTML = ""
                         localStorage.setItem("username", uname)

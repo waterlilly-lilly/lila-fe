@@ -1,4 +1,4 @@
-package dev.waterlilly.lila_fe.util
+package dev.waterlilly.lila.util
 
 import kotlinx.browser.window
 import org.w3c.fetch.Headers

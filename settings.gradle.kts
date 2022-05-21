@@ -1,3 +1,3 @@
 
-rootProject.name = "lila-fe"
+rootProject.name = "lila"
 

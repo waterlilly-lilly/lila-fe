@@ -1,4 +1,4 @@
-package dev.waterlilly.lila_fe.util
+package dev.waterlilly.lila.util
 
 import kotlinx.dom.hasClass
 import org.w3c.dom.Element

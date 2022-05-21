@@ -1,9 +1,9 @@
-package dev.waterlilly.lila_fe.window.windows
+package dev.waterlilly.lila.window.windows
 
-import dev.waterlilly.lila_fe.api.Authentication
-import dev.waterlilly.lila_fe.util.Networking
-import dev.waterlilly.lila_fe.util.equ
-import dev.waterlilly.lila_fe.window.Window
+import dev.waterlilly.lila.api.AuthenticationAPI
+import dev.waterlilly.lila.util.Networking
+import dev.waterlilly.lila.util.equ
+import dev.waterlilly.lila.window.Window
 import kotlinx.browser.document
 import kotlinx.browser.window
 import org.w3c.dom.HTMLFormElement
@@ -30,7 +30,7 @@ object RegisterWindow : Window {
                             document.getElementById("errormessage")?.innerHTML = "$uname is already taken!"
                             return@then
                         }
-                        Authentication.register(uname as String, password as String).then { regRes ->
+                        AuthenticationAPI.register(uname as String, password as String).then { regRes ->
                             if (regRes.status equ 200) {
                                 document.getElementById("errormessage")?.innerHTML = "Registered your account!"
                                 window.location.replace("/login.html")
