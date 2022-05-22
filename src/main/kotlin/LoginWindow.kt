@@ -1,16 +1,12 @@
-package dev.waterlilly.lila.window.windows
-
-import dev.waterlilly.lila.api.AuthenticationAPI
-import dev.waterlilly.lila.util.equ
-import dev.waterlilly.lila.window.Window
+import api.AuthenticationAPI
 import kotlinx.browser.document
 import kotlinx.browser.localStorage
 import kotlinx.browser.window
 import org.w3c.dom.HTMLFormElement
 import org.w3c.xhr.FormData
 
-object LoginWindow : Window {
-    override fun runWindow() {
+object LoginWindow {
+    fun runWindow() {
         val form = document.getElementById("login-form") as HTMLFormElement
         form.addEventListener("submit", { event ->
             event.preventDefault()
@@ -35,6 +31,4 @@ object LoginWindow : Window {
             }
         })
     }
-    override val title: String
-        get() = "Login"
 }

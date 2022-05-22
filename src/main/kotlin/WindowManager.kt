@@ -1,8 +1,3 @@
-package dev.waterlilly.lila.window
-
-import dev.waterlilly.lila.util.DOM
-import dev.waterlilly.lila.window.windows.LoginWindow
-import dev.waterlilly.lila.window.windows.RegisterWindow
 import kotlinx.browser.document
 import kotlinx.dom.addClass
 import kotlinx.dom.hasClass
@@ -11,11 +6,6 @@ import org.w3c.dom.*
 import org.w3c.dom.events.MouseEvent
 object WindowManager {
     val openWindows: HashSet<String> = HashSet()
-    val windows: HashMap<String, Window> = HashMap()
-    fun initializeWindows() {
-        windows["login"] = LoginWindow
-        windows["register"] = RegisterWindow
-    }
     fun afterInitialize() {
         document.addEventListener("click", {event ->
             val target = event.target as Element
@@ -25,7 +15,39 @@ object WindowManager {
             }
         })
     }
+    fun toggleWindow(window: String) {
+        if (openWindows.contains(window)) {
+            document.getElementById("$window-window")?.remove()
+            println("Destroying window $window")
+            openWindows.remove(window)
+        } else {
+            Networking.get("/windows/$window.htm")
+                .then { res -> res.text() }
+                .then { body ->
+                    val div = document.createElement("div") as HTMLDivElement
+                    val header = document.createElement("div") as HTMLDivElement
+                    val dragHandle = document.createElement("button") as HTMLButtonElement
 
+                    dragHandle.innerHTML = "<span class=\"material-symbols-outlined\">open_with</span>"
+                    dragHandle.addClass("window-drag-button")
+                    dragHandle.id = "$window-window-drag-button"
+
+                    header.id = "$window-window-header"
+                    header.addClass("window-header")
+                    header.innerHTML = dragHandle.outerHTML + "\n" + "Window"
+
+                    div.id = "$window-window"
+
+                    div.addClass("window")
+                    div.innerHTML = header.outerHTML + "\n" + body
+
+                    println("creating window $window")
+                    document.body?.insertBefore(div, document.getElementById("errormessage"))
+                    dragElement(div)
+                    openWindows.add(window)
+                }
+        }
+    }
     fun dragElement(element: Element) {
         var pos1: Int
         var pos2: Int

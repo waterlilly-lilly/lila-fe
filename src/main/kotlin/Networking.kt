@@ -1,5 +1,3 @@
-package dev.waterlilly.lila.util
-
 import kotlinx.browser.window
 import org.w3c.fetch.Headers
 import org.w3c.fetch.RequestInit

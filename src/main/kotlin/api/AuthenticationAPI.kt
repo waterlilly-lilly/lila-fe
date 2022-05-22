@@ -1,11 +1,12 @@
-package dev.waterlilly.lila.api
+package api
 
-import dev.waterlilly.lila.util.Networking
+import Networking
 import org.w3c.fetch.Response
 import kotlin.js.Promise
 import kotlin.js.json
 
 @JsExport
+@JsName("authentication")
 object AuthenticationAPI {
     @JsName("login")
     fun login(username: String, password: String): Promise<Response> {
