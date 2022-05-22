@@ -1,6 +1,6 @@
 package api
 
-import WindowManager
+import window.WindowManager
 
 @JsExport
 @JsName("window")

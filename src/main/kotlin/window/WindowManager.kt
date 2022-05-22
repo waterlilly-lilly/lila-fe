@@ -1,9 +1,14 @@
+package window
+
 import kotlinx.browser.document
 import kotlinx.dom.addClass
 import kotlinx.dom.hasClass
 import kotlinx.dom.removeClass
 import org.w3c.dom.*
 import org.w3c.dom.events.MouseEvent
+import util.DOM
+import util.Networking
+
 object WindowManager {
     val openWindows: HashSet<String> = HashSet()
     fun afterInitialize() {

@@ -1,6 +1,6 @@
 package api
 
-import Networking
+import util.Networking
 import org.w3c.fetch.Response
 import kotlin.js.Promise
 import kotlin.js.json

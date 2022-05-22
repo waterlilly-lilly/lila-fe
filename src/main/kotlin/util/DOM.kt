@@ -1,3 +1,5 @@
+package util
+
 import kotlinx.dom.hasClass
 import org.w3c.dom.Element
 

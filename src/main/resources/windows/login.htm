@@ -1,10 +1,10 @@
 <lila version="1.0.0">
     <lila-meta id="login"/>
     <lila-meta version="1.0"/> <!--window version-->
-    <!--<lila-meta exposed/> this tag would keep the <lila> tag in the DOM thus allowing it to be edited by plugins. this is not recommended for things that need to be secure, such as logins-->
+    <!--<lila-meta exposed/> this tag would keep the <lila> tag in the util.DOM thus allowing it to be edited by plugins. this is not recommended for things that need to be secure, such as logins-->
     <lila-title lang="en">Login</lila-title>
     <lila-scripts> <!--any scripts used by a window must be managed for safety purposes, so they can be declared here-->
-        <lila-script src="lila.LoginWindow.runWindow()"/>
+        <lila-script src="lila.window.windows.LoginWindow.runWindow()"/>
         <lila-api name="lila.api.window"/>
         <lila-api name="lila.api.authentication"/>
     </lila-scripts>

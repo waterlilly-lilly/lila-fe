@@ -1,9 +1,12 @@
+package window.windows
+
 import api.AuthenticationAPI
 import kotlinx.browser.document
 import kotlinx.browser.localStorage
 import kotlinx.browser.window
 import org.w3c.dom.HTMLFormElement
 import org.w3c.xhr.FormData
+import util.equ
 
 object LoginWindow {
     fun runWindow() {
